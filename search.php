@@ -47,13 +47,13 @@
                             </thead>
                             <tbody>
                                 <?php 
-                                    $conn = mysqli_connect('localhost', 'root','chrispchicken','test'); 
+                                    $conn = mysqli_connect('localhost', 'root','password','test'); 
                                     //use your database
 
                                     if(isset($_GET['search']))
                                     {
                                         $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM lolol WHERE CONCAT(firstname,lastname,email) LIKE '%$filtervalues%' ";
+                                        $query = "SELECT * FROM movies WHERE CONCAT(movie_name,cast,release_year,genre,rating) LIKE '%$filtervalues%' ";
                                         $query_run = mysqli_query($conn, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)
@@ -63,9 +63,9 @@
                                                 ?>
                                                 
                                                     <div>
-                                                        <h2><?= $items['firstname']; ?></h2>
-                                                        <h3><?= $items['lastname']; ?></h3>
-                                                        <h4><?= $items['email']; ?></h4>
+                                                        <h2><?= $items['movie_name']; ?></h2>
+                                                        <h3><?= $items['cast']; ?></h3>
+                                                        <h3><?= $items['release_year']; ?></h3>
                                                     </div> <br>
                                                 
                                                 <?php
