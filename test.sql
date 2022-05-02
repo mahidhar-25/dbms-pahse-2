@@ -17,3 +17,4 @@ INSERT INTO movies VALUES ('The Dark Knight','2008','Action','Christian Bale,Hea
 UPDATE movies SET rating='4.9/5' WHERE movie_name='The Dark Knight';
 UPDATE movies SET review="Awesome" WHERE movie_name='The Dark Knight';
 select * from movies;
+DESC movies;

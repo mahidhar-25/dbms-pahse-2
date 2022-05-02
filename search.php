@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- Bootstrap CSS -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="search_style.css">
    <title>Search page</title>
 </head>
 <body>
@@ -62,10 +63,13 @@
                                             {
                                                 ?>
                                                 
-                                                    <div>
-                                                        <h2><?= $items['movie_name']; ?></h2>
-                                                        <h3><?= $items['cast']; ?></h3>
-                                                        <h3><?= $items['release_year']; ?></h3>
+                                                    <div class="search-results">
+                                                        <div class="search-item"><?= $items['movie_name']; ?></div>
+                                                        <div class="search-item"><?= $items['cast']; ?></div>
+                                                        <div class="search-item"><?= $items['release_year']; ?></div>
+                                                        <div class="search-item"><?= $items['genre']; ?></div>
+                                                        <div class="search-item"><?= $items['rating']; ?></div>
+                                                        <div class="search-item"><?= $items['review']; ?></div>
                                                     </div> <br>
                                                 
                                                 <?php
