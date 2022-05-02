@@ -39,7 +39,7 @@ if (!isset($_SESSION['admin_name'])) {
       <div class="navi-bar-admin-page">
          <div class="d-flex flex-row justify-content-start">
             <div>
-               <h1>welcome <span style="color:white; font-size:36px; color:red"><?php echo $_SESSION['admin_name'] ?></span></h1>
+               <h1>Welcome <span style="color:white; font-size:36px; color:red"><?php echo $_SESSION['admin_name'] ?></span></h1>
             </div>
             <div class="ml-auto"><a href="logout.php" class="btn btn-info btn-lg" style="text-align:right; font-size: 20px; color:white;">logout</a></div>
          </div>
