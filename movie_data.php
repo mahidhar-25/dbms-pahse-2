@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
    $insert = "INSERT INTO movie_form(movie_name, cast, year_of_release, genre , rating ,pic_link) VALUES('$movie_name','$cast','$year_of_release','$genre' , '$rating' , '$pic_link')";
          mysqli_query($conn, $insert);
          header('location:admin_page.php');
-
+      
 //    $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
 
 //    $result = mysqli_query($conn, $select);

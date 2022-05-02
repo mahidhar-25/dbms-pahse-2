@@ -1,0 +1,45 @@
+
+ /* Display the search results as a column */
+ body{
+ 	margin: 0;
+ 	padding: 0;
+ 	background-image: url(https://github.com/jitinchekka/dbms-phase-2/blob/master/movie-page-bg.png?raw=true);
+	background-repeat: no-repeat;
+	background-size: cover; 
+ }
+ .search-results{
+	display: grid;
+	/* grid with 3 rows and 2 columns */
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	 align-items: center; 
+	/*max-width: 60vw;*/
+	grid-gap: 0px;
+	flex-wrap: wrap;
+	 /* justify-content: space-around;  */
+	margin-top: 2rem;
+	/* max-width: 50vw; */
+ }
+ .search-inner-div{
+ 	margin: 0 10rem;
+ 		border: solid 1px;
+	background-color: #dbdad8;
+	justify-content: center;
+	/* rounded border solid 1px */
+	border-radius: 15px;
+	padding: 10px 0; 
+	text-align: center;
+		align-items: center;
+	color: black;
+ }
+
+ .seven{
+	 grid-column: 3/4;
+	 grid-row: 1/4;
+	 max-width: 20vw;
+ }
+ /* Display like a capsule */
+ .search-item{
+
+	
+ }
