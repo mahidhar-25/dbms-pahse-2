@@ -62,13 +62,18 @@
 }
 
 .form-container{
+   background-image: url("https://cdn.discordapp.com/attachments/841177812685946880/970634892566216764/login_pg.png");
+   background-size: cover;
    min-height: 100vh;
    display: flex;
    align-items: center;
    justify-content: center;
    padding:20px;
    padding-bottom: 60px;
-   background: #eee;
+}
+
+.move_left{
+   margin-left: 80vh;
 }
 
 .form-container form{

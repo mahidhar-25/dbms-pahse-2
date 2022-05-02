@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
 <body>
    
 <div class="form-container">
-
+   <div class="move_left">
    <form action="" method="post">
       <h3>register now</h3>
       <?php
@@ -70,6 +70,7 @@ if(isset($_POST['submit'])){
       <input type="submit" name="submit" value="register now" class="form-btn">
       <p>already have an account? <a href="login_form.php">login now</a></p>
    </form>
+   </div>
 
 </div>
 
