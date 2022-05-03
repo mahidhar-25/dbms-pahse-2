@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_name'])) {
 <html lang="en">
 
 <head>
-   <title>admin page</title>
+   <title>User page</title>
 
 
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -38,14 +38,14 @@ if (!isset($_SESSION['user_name'])) {
    <div class="bg-popcorn" style="height:100vh; color:white;">
       <div class="navi-bar-admin-page">
          <div class="d-flex flex-row justify-content-start">
-            <div>
+            <div class="heading-welcome">
                <h1>Welcome <span style="color:white; font-size:36px; color:red"><?php echo $_SESSION['user_name'] ?></span></h1>
             </div>
             <div class="ml-auto"><a href="logout.php" class="btn btn-info btn-lg" style="text-align:right; font-size: 20px; color:white;">logout</a></div>
          </div>
       </div>
       <!-- Trigger the modal with a button -->
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">show details</button>
+      <button type="button" class="btn btn-info btn-lg show_details" data-toggle="modal" data-target="#myModal1">show details</button>
       <br>
       <br>
       <!-- Modal -->
@@ -126,6 +126,7 @@ if (!isset($_SESSION['user_name'])) {
 
                      <div style="color:white;" class="search-results">
 
+                        <img src="<?= $items['pic_link']; ?>" class="img-grid">
                         <div class="search-item">
                            <div class="search-inner-div">
                               movie name:<?= $items['movie_name']; ?></div>
@@ -150,12 +151,11 @@ if (!isset($_SESSION['user_name'])) {
                               <h9> rating:</h9><?= $items['rating']; ?>
                            </div>
                         </div>
-                        <div class="search-item">
+                        <!-- <div class="search-item">
                            <div class="search-inner-div">
                               <h9> link:</h9><?= $items['pic_link']; ?>
-                           </div>
+                           </div> -->
                         </div>
-                        <img src="<?= $items['pic_link']; ?>" class="seven">
                      </div> <br>
 
                   <?php

@@ -66,14 +66,14 @@ if (!isset($_SESSION['admin_name'])) {
                <div class="modal-body">
                   <div class="form-container remove-min-ht">
                      <form action="movie_data.php" method="post">
-                        <div class="data">
-                           <input type="text" name="movie_name" required placeholder="<?php echo $_SESSION['admin_name'] ?>">
+                        <div class="data" style="color: black;">
+                           <input type="text" name="movie_name" required placeholder="Movie name">
                            <input type="text" name="cast" required placeholder="enter cast">
                            <input type="text" name="year_of_release" required placeholder="year of release">
                            <input type="text" name="genre" required placeholder="genre">
                            <input type="text" name="rating" required placeholder="rating">
                            <input type="text" name="pic_link" required placeholder="link">
-                           <input type="submit" name="submit" value="add_new" class="form-btn">
+                           <input type="submit" name="submit" value="Add new" class="form-btn">
                         </div>
                      </form>
                   </div>
@@ -130,30 +130,30 @@ if (!isset($_SESSION['admin_name'])) {
             ?>
 
                      <div style="color:white;" class="search-results">
-                        <img src="<?= $items['pic_link']; ?>" class="seven">
+                        <img src="<?= $items['pic_link']; ?>" class="img-grid">
 
                         <div class="search-item">
                            <div class="search-inner-div">
-                              movie name:<?= $items['movie_name']; ?></div>
+                              movie name: <?= $items['movie_name']; ?></div>
                         </div>
                         <div class="search-item">
                            <div class="search-inner-div">
-                              <h9>cast:</h9><?= $items['cast']; ?>
+                              <h9>cast: </h9><?= $items['cast']; ?>
                            </div>
                         </div>
                         <div class="search-item">
                            <div class="search-inner-div">
-                              <h9> Year of release:</h9><?= $items['year_of_release']; ?>
+                              <h9> Year of release: </h9><?= $items['year_of_release']; ?>
                            </div>
                         </div>
                         <div class="search-item">
                            <div class="search-inner-div">
-                              <h9>Genre:</h9><?= $items['genre']; ?>
+                              <h9>Genre: </h9><?= $items['genre']; ?>
                            </div>
                         </div>
                         <div class="search-item">
                            <div class="search-inner-div">
-                              <h9> rating:</h9><?= $items['rating']; ?>
+                              <h9> rating: </h9><?= $items['rating']; ?>
                            </div>
                         </div>
                      </div> <br>
