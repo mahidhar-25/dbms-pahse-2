@@ -91,7 +91,7 @@ if (!isset($_SESSION['admin_name'])) {
             <!-- Modal content-->
             <div class="modal-content">
                <div class="modal-header">
-                  <h4 class="modal-title" style="color:black;">Add Movie Details</h4>
+                  <h4 class="modal-title" style="color:black;">Enter Movie Details</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                </div>
                <div class="modal-body">
