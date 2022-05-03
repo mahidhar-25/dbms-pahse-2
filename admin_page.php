@@ -46,7 +46,9 @@ if (!isset($_SESSION['admin_name'])) {
       </div>
       <!-- Trigger the modal with a button -->
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Movie</button>
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">search details</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">show details</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">update details</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">delete details</button>
       <br>
       <br>
       <!-- Modal -->
@@ -126,6 +128,7 @@ if (!isset($_SESSION['admin_name'])) {
             ?>
 
                      <div style="color:white;" class="search-results">
+
                         <div class="search-item">
                            <div class="search-inner-div">
                               movie name:<?= $items['movie_name']; ?></div>
@@ -152,12 +155,216 @@ if (!isset($_SESSION['admin_name'])) {
                         </div>
                         <div class="search-item">
                            <div class="search-inner-div">
-                              dummy
+                              <h9> link:</h9><?= $items['pic_link']; ?>
                            </div>
                         </div>
                         <img src="<?= $items['pic_link']; ?>" class="seven">
-                        <!-- <div class="search-item"><?= $items['pic_link']; ?></div> -->
                      </div> <br>
+
+                  <?php
+                     //use your database's attributes
+                  }
+               } else {
+                  ?>
+                  <tr>
+                     <td colspan="4">No Record Found</td>
+                  </tr>
+            <?php
+               }
+            }
+            ?>
+         </tbody>
+      </table>
+
+
+      <div class="modal fade" id="myModal2" role="dialog">
+         <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h4 class="modal-title" style="color:black;">update Details</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <div class="modal-body">
+                  <div class="form-container remove-min-ht">
+                     <form action="" method="GET">
+                        <div class="input-group mb-3">
+                           <input type="text" name="search2" required value="<?php if (isset($_GET['search2'])) {
+                                                                                 echo $_GET['search2'];
+                                                                              } ?>" class="form-control" placeholder="Search data">
+                           <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+
+<!-- To display search results as a styled table -->
+
+      <table class="table table-bordered">
+         <tbody>
+            <?php
+            if (isset($_GET['search2'])) {
+               $filtervalues = $_GET['search2'];
+               $query = "SELECT * FROM movie_form WHERE CONCAT(movie_name,cast,year_of_release,genre,rating , pic_link) LIKE '%$filtervalues%' ";
+               $query_run = mysqli_query($conn, $query);
+
+               if (mysqli_num_rows($query_run) > 0) {
+                  foreach ($query_run as $items) {
+            ?>
+
+                     <form action="update_row.php" method="post">
+                           <div class="data search-results" style="color:black">
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="id" required value="<?= $items['id']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="movie_name" required value="<?= $items['movie_name']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="cast" required value="<?= $items['cast']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="year_of_release" required value="<?= $items['year_of_release']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="genre" required value="<?= $items['genre']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="rating" required value="<?= $items['rating']; ?>">
+                              </div>
+                              </div>
+                              <img src="<?= $items['pic_link']; ?>" class="seven">
+                              <input type="submit" name="submit" value="update" class="form-btn">
+
+
+                           </div>
+                        </form>
+
+                     <br>
+
+                  <?php
+                     //use your database's attributes
+                  }
+               } else {
+                  ?>
+                  <tr>
+                     <td colspan="4">No Record Found</td>
+                  </tr>
+            <?php
+               }
+            }
+            ?>
+         </tbody>
+      </table>
+
+
+
+
+
+      <div class="modal fade" id="myModal3" role="dialog">
+         <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h4 class="modal-title" style="color:black;">Delete Details</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <div class="modal-body">
+                  <div class="form-container remove-min-ht">
+                     <form action="" method="GET">
+                        <div class="input-group mb-3">
+                           <input type="text" name="search3" required value="<?php if (isset($_GET['search3'])) {
+                                                                                 echo $_GET['search3'];
+                                                                              } ?>" class="form-control" placeholder="Search data">
+                           <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+
+<!-- To display search results as a styled table -->
+
+      <table class="table table-bordered">
+         <tbody>
+            <?php
+            if (isset($_GET['search3'])) {
+               $filtervalues = $_GET['search3'];
+               $query = "SELECT * FROM movie_form WHERE CONCAT(movie_name,cast,year_of_release,genre,rating , pic_link) LIKE '%$filtervalues%' ";
+               $query_run = mysqli_query($conn, $query);
+
+               if (mysqli_num_rows($query_run) > 0) {
+                  foreach ($query_run as $items) {
+            ?>
+
+                     <form action="delete_row.php" method="post"> 
+                           <div class="data search-results" style="color:black">
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="id" required value="id:<?= $items['id']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="movie_name" required value="<?= $items['movie_name']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="cast" required value="<?= $items['cast']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="year_of_release" required value="<?= $items['year_of_release']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="genre" required value="<?= $items['genre']; ?>">
+                              </div>
+                              </div>
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                              <input type="text" name="rating" required value="<?= $items['rating']; ?>">
+                              </div>
+                              </div>
+                              <img src="<?= $items['pic_link']; ?>" class="seven">
+                             <input type="submit" name="submit" value="delete" class="form-btn">
+
+
+                           </div>
+                        </form>
+
+                     <br>
 
                   <?php
                      //use your database's attributes
@@ -178,3 +385,22 @@ if (!isset($_SESSION['admin_name'])) {
 </body>
 
 </html>
+
+<!-- <form action="delete_row.php" method="post"> 
+                           <div class="data" style="color:black">
+                              <div class="search-item">
+                              <div class="search-inner-div">
+                                 movie name:<?= $items['movie_name']; ?></div>
+                              </div>
+                              <input type="text" name="id" required value="<?= $items['id']; ?>">
+                              <input type="text" name="movie_name" required value="<?= $items['movie_name']; ?>">
+                              <input type="text" name="cast" required value="<?= $items['cast']; ?>">
+                              <input type="text" name="year_of_release" required value="<?= $items['year_of_release']; ?>">
+                              <input type="text" name="genre" required value="<?= $items['genre']; ?>">
+                              <input type="text" name="rating" required value="<?= $items['rating']; ?>">
+                              <input type="text" name="pic_link" required value="<?= $items['pic_link']; ?>">
+                             <input type="submit" name="submit" value="delete" class="form-btn">
+
+
+                           </div>
+                        </form> -->
