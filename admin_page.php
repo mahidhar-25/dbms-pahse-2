@@ -38,17 +38,19 @@ if (!isset($_SESSION['admin_name'])) {
    <div class="bg-popcorn" style="height:100vh; color:white;">
       <div class="navi-bar-admin-page">
          <div class="d-flex flex-row justify-content-start">
-            <div>
+            <div class="heading-welcome">
                <h1>Welcome <span style="color:white; font-size:36px; color:red"><?php echo $_SESSION['admin_name'] ?></span></h1>
             </div>
             <div class="ml-auto"><a href="logout.php" class="btn btn-info btn-lg" style="text-align:right; font-size: 20px; color:white;">logout</a></div>
          </div>
       </div>
       <!-- Trigger the modal with a button -->
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Movie</button>
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">show details</button>
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">update details</button>
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">delete details</button>
+      <div class="buttons-top">
+         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Movie</button>
+         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Show details</button>
+         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Update details</button>
+         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Delete details</button>
+      </div>
       <br>
       <br>
       <!-- Modal -->
@@ -113,7 +115,7 @@ if (!isset($_SESSION['admin_name'])) {
 
 
 
-<!-- To display search results as a styled table -->
+      <!-- To display search results as a styled table -->
 
       <table class="table table-bordered">
          <tbody>
@@ -128,6 +130,7 @@ if (!isset($_SESSION['admin_name'])) {
             ?>
 
                      <div style="color:white;" class="search-results">
+                        <img src="<?= $items['pic_link']; ?>" class="seven">
 
                         <div class="search-item">
                            <div class="search-inner-div">
@@ -153,12 +156,6 @@ if (!isset($_SESSION['admin_name'])) {
                               <h9> rating:</h9><?= $items['rating']; ?>
                            </div>
                         </div>
-                        <div class="search-item">
-                           <div class="search-inner-div">
-                              <h9> link:</h9><?= $items['pic_link']; ?>
-                           </div>
-                        </div>
-                        <img src="<?= $items['pic_link']; ?>" class="seven">
                      </div> <br>
 
                   <?php
@@ -176,7 +173,7 @@ if (!isset($_SESSION['admin_name'])) {
          </tbody>
       </table>
 
-
+      <!-- Update -->
       <div class="modal fade" id="myModal2" role="dialog">
          <div class="modal-dialog">
 
@@ -207,7 +204,7 @@ if (!isset($_SESSION['admin_name'])) {
 
 
 
-<!-- To display search results as a styled table -->
+      <!-- update details -->
 
       <table class="table table-bordered">
          <tbody>
@@ -222,43 +219,55 @@ if (!isset($_SESSION['admin_name'])) {
             ?>
 
                      <form action="update_row.php" method="post">
-                           <div class="data search-results" style="color:black">
-                              <div class="search-item">
+                        <div class="update-results" style="color:black">
+                           <img src="<?= $items['pic_link']; ?>" class="img-grid">
+                           <div class="search-item">
                               <div class="search-inner-div">
-                              <input type="text" name="id" required value="<?= $items['id']; ?>">
+                                 <input type="text" name="id" required value="<?= $items['id']; ?>">
                               </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="movie_name" required value="<?= $items['movie_name']; ?>">
-                              </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="cast" required value="<?= $items['cast']; ?>">
-                              </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="year_of_release" required value="<?= $items['year_of_release']; ?>">
-                              </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="genre" required value="<?= $items['genre']; ?>">
-                              </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="rating" required value="<?= $items['rating']; ?>">
-                              </div>
-                              </div>
-                              <img src="<?= $items['pic_link']; ?>" class="seven">
-                              <input type="submit" name="submit" value="update" class="form-btn">
-
-
                            </div>
-                        </form>
+
+                           <div class="search-item">
+                              <div class="search-inner-div">
+                                 <input type="text" name="movie_name" required value="<?= $items['movie_name']; ?>">
+                              </div>
+                           </div>
+
+                           <div class="search-item">
+                              <div class="search-inner-div">
+                                 <input type="text" name="cast" required value="<?= $items['cast']; ?>">
+                              </div>
+                           </div>
+
+                           <div class="search-item">
+                              <div class="search-inner-div">
+                                 <input type="text" name="year_of_release" required value="<?= $items['year_of_release']; ?>">
+                              </div>
+                           </div>
+                           
+                           <div class="search-item">
+                              <div class="search-inner-div">
+                                 <input type="text" name="genre" required value="<?= $items['genre']; ?>">
+                              </div>
+                           </div>
+
+                           <div class="search-inner-div">
+                                 <div class="search-item">
+                                 <input type="text" name="rating" required value="<?= $items['rating']; ?>">
+                              </div>
+                           </div>
+
+                           <div class="search-inner-div">
+                                 <div class="search-item">
+                                 <input type="text" name="pic_link" required value="<?= $items['pic_link']; ?>">
+                              </div>
+                           </div>
+                           
+                           <div class="wrapper"><input type="submit" name="submit" value="update" class="form-btn update-btn"></div>
+
+
+                        </div>
+                     </form>
 
                      <br>
 
@@ -278,7 +287,7 @@ if (!isset($_SESSION['admin_name'])) {
       </table>
 
 
-
+      <!-- Delete details -->
 
 
       <div class="modal fade" id="myModal3" role="dialog">
@@ -311,7 +320,7 @@ if (!isset($_SESSION['admin_name'])) {
 
 
 
-<!-- To display search results as a styled table -->
+      <!-- To display search results as a styled table -->
 
       <table class="table table-bordered">
          <tbody>
@@ -325,44 +334,45 @@ if (!isset($_SESSION['admin_name'])) {
                   foreach ($query_run as $items) {
             ?>
 
-                     <form action="delete_row.php" method="post"> 
-                           <div class="data search-results" style="color:black">
-                              <div class="search-item">
+                     <form action="delete_row.php" method="post">
+                        <div class="data update-results" style="color:black">
+                           <img src="<?= $items['pic_link']; ?>" class="img-grid">
+                           <div class="search-item">
                               <div class="search-inner-div">
-                              <input type="text" name="id" required value="id:<?= $items['id']; ?>">
+                     
+                                 <input type="text" name="id" required value="Movie ID :<?= $items['id']; ?>">
                               </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="movie_name" required value="<?= $items['movie_name']; ?>">
-                              </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="cast" required value="<?= $items['cast']; ?>">
-                              </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="year_of_release" required value="<?= $items['year_of_release']; ?>">
-                              </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="genre" required value="<?= $items['genre']; ?>">
-                              </div>
-                              </div>
-                              <div class="search-item">
-                              <div class="search-inner-div">
-                              <input type="text" name="rating" required value="<?= $items['rating']; ?>">
-                              </div>
-                              </div>
-                              <img src="<?= $items['pic_link']; ?>" class="seven">
-                             <input type="submit" name="submit" value="delete" class="form-btn">
-
-
                            </div>
-                        </form>
+                           <div class="search-item">
+                              <div class="search-inner-div">
+                                 <input type="text" name="movie_name" required value="Movie name: <?= $items['movie_name']; ?>">
+                              </div>
+                           </div>
+                           <div class="search-item">
+                              <div class="search-inner-div">
+                                 <input type="text" name="cast" required value="Starring: <?= $items['cast']; ?>">
+                              </div>
+                           </div>
+                           <div class="search-item">
+                              <div class="search-inner-div">
+                                 <input type="text" name="year_of_release" required value="Release Year: <?= $items['year_of_release']; ?>">
+                              </div>
+                           </div>
+                           <div class="search-item">
+                              <div class="search-inner-div">
+                                 <input type="text" name="genre" required value="Genre: <?= $items['genre']; ?>">
+                              </div>
+                           </div>
+                           <div class="search-item">
+                              <div class="search-inner-div">
+                                 <input type="text" name="rating" required value="Rating: <?= $items['rating']; ?>">
+                              </div>
+                           </div>
+                           <div class="wrapper"><input type="submit" name="submit" value="delete" class="form-btn update-btn"></div>
+
+
+                        </div>
+                     </form>
 
                      <br>
 

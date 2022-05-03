@@ -76,6 +76,8 @@
 
 .bg-popcorn{
    background-image: url("https://github.com/jitinchekka/dbms-phase-2/blob/master/movie-page-bg.png?raw=true");
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
 
